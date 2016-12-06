@@ -1,8 +1,14 @@
 /* navBar stuff normally */
+
+body {
+	background-color:#b7f461;		
+}
+
 ul.navBar{
 	list-style-type: none;
     margin: 0;
     padding: 0;
+	border: 0;
     overflow: hidden;
     background-color: #3d7f1e;
 	width: 100%;
@@ -60,6 +66,17 @@ ul.advantageList li{
 	text-align: center;
 }
 
+/* the signup input bars and buttons*/
+.inputBar:active {
+	background-color: #d6d7d8;
+}
+.logInButton {
+	background-color: #3d7f1e;
+	border-color: #3d7f1e;
+}
+.signUp {
+	margin-left: 50px;
+}
 
 /* the main header normally*/
 h1.mainHeader{
