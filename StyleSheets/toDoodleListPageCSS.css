@@ -1,0 +1,42 @@
+/* navBar stuff normally */
+ul.navBar{
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #3d7f1e;
+	width: 100%;
+}
+ul.navBar li {
+	float: left;
+	width: 20%;
+}
+ul.navBar li a {
+    display: inline-block;
+    color: #f2f2f2;
+	text-align: center;
+    padding: 20px 40px;
+    text-decoration: none;
+    transition: 0.7s;
+    font-size: 24px;
+}
+ul.navBar li img{
+	display: inline-block;
+	text-align: center;
+	padding: 0px 25px;
+}
+ul.navBar li a:hover {
+	background-color: #7ec65d;
+}
+ul.navBar li.icon {
+	display: none;
+}
+
+
+/* the ToDoodle logo normally*/
+#ToDoodleLogo {
+	width:161px;
+	height:65px;
+	float:left;
+	background-color:transparent;
+}
