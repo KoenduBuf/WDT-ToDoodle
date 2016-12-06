@@ -1,10 +1,10 @@
 <html lang="en">
 	<head>
 		<title>ToDoodle - Your lists</title>
-		
+		<script type="text/javascript" src="../Javascript/ListPage.js"></script>
+		<link rel="stylesheet" href="../StyleSheets/toDoodleEnterPageCSS.css">
 	</head>
 	<body>
-	<script type="text/javascript" src="../Javascript/ListPage.js"></script>
 		<nav>
 			<ul class="navBar" id="topNavBar">
 				<li><img src="../Images/LogoNoBG.png" class="images" id="ToDoodleLogo"/><li>
@@ -46,9 +46,9 @@
 		<form>
 			<label for="itemName">Enter todo item:</label>
 			<input name="name" type="text" id="itemNameInput">
-			<button href="#" value="Add Item" onclick="changeText2()" class="listIcons">
-				<img src="../Images/new-file.png" class="iconImages" alt="Add Item">
-			</button>
+			<input type='button' href="#" value="Add Item" onclick="addItemButton()" class="listIcons">
+				<!--img src="../Images/new-file.png" class="iconImages" alt="Add Item"-->
+			</input>
 		</form>
 
 		
