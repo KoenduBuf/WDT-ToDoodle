@@ -1,42 +1,47 @@
-/* navBar stuff normally */
-ul.navBar{
-	list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #3d7f1e;
-	width: 100%;
-}
-ul.navBar li {
-	float: left;
-	width: 20%;
-}
-ul.navBar li a {
-    display: inline-block;
-    color: #f2f2f2;
-	text-align: center;
-    padding: 20px 40px;
-    text-decoration: none;
-    transition: 0.7s;
-    font-size: 24px;
-}
-ul.navBar li img{
-	display: inline-block;
-	text-align: center;
-	padding: 0px 25px;
-}
-ul.navBar li a:hover {
-	background-color: #7ec65d;
-}
-ul.navBar li.icon {
-	display: none;
+/* General: body */
+body {
+	background-color:#b7f461;		
 }
 
+/* Item table */
 
-/* the ToDoodle logo normally*/
-#ToDoodleLogo {
-	width:161px;
-	height:65px;
-	float:left;
-	background-color:transparent;
+.tableToDoList{
+	border: 1px solid black;
+	table-layout: fixed;
+	margin-bottom:20px;
+}
+.tableToDoList td.firstLine{
+	text-align: center;
+	border: 3px solid black;
+	width: 150px;
+}
+.tableToDoList td.firstLine#Priority{
+	width: 60px;
+}
+.tableToDoList td.firstLine#Reminder{
+	width: 80px;
+}
+.tableToDoList td.firstLine#Done{
+	width: 60px;
+}
+
+.tableToDoList td.firstLine#Name{
+	width: 200px;
+}
+.tableToDoList td.firstLine#DueDate{
+	width: 100px;
+}
+	
+.tableToDoList td{
+	text-align: left;
+	border: 1px solid black;
+}
+.tableToDoList td.red{
+	background-color: #ff0800;
+}
+.tableToDoList td.orange{
+	background-color: #ff9000;
+}
+.tableToDoList td.green{
+	background-color: #0cff00;
 }

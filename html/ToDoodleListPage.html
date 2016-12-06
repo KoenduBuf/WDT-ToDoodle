@@ -1,10 +1,17 @@
 <html lang="en">
+ <meta charset="UTF-8"> 
 	<head>
 		<title>ToDoodle - Your lists</title>
+		<!--Import stylesheets-->
 		<script type="text/javascript" src="../Javascript/ListPage.js"></script>
-		<link rel="stylesheet" href="../StyleSheets/toDoodleEnterPageCSS.css">
+		<script type="text/javascript" src="../Javascript/navBarResponsive.js"></script>
+		<link rel="stylesheet" href="../StyleSheets/toDoodleListPageCSS.css"/>
+		<link rel="stylesheet" href="../StyleSheets/toDoodleMenuBarCSS.css"/>
 	</head>
 	<body>
+	
+	
+	<!--navBar-->
 		<nav>
 			<ul class="navBar" id="topNavBar">
 				<li><img src="../Images/LogoNoBG.png" class="images" id="ToDoodleLogo"/><li>
@@ -13,11 +20,13 @@
 				<li><a href="ToDoodleContact.html">Contact</a></li>
 				<li><a href="ToDoodleHelp.html">Help</a></li>
 				<li class="icon">
-					<a href="#" onclick="#">&#9776;</a>
+					<a href="#" onclick="responsiveFunction()">&#9776;</a>
 				</li>
 			</ul>
 		</nav>
 
+		
+		
 		<!--
 		<div>
 			<input type="button" value="Remove list" onclick="#" class="icons">
@@ -39,31 +48,41 @@
 		</ul>
 		-->
 		
-		<ul class="myList" id="list1" title="myList1">
-			<li>test</li>
-			
-		</ul>
+		<table class="tableToDoList" id="tableList" border="1">
+			<tr>
+				<td class="firstLine" id="Name"> Name: </td>
+				<td class="firstLine" id="DueDate"> Due Date: </td>
+				<td class="firstLine" id="Priority"> Priority: </td>
+				<td class="firstLine" id="Reminder"> Reminder: </td>
+				<td class="firstLine" id="Done"> Done: </td>
+			</tr>
+		</table>
+		
+
 		
 		<form>
-			<label for="itemNameInput">Enter todo item:</label>
+			<label for="itemNameInput">Todo item:</label>
 			<input name="name" type="text" id="itemNameInput">
-			<input type='button' href="#" value="Add Item" onclick="addItemButton()" class="listIcons">
+			
 				<!--img src="../Images/new-file.png" class="iconImages" alt="Add Item"-->
 			</input>
-			</br>
+			<br/>
 			<label for="dueDateInput">Due date:</label>
 			<input name="dueDate" type="date" id="dueDateInput">
-			</br>
+			<br/>
 			<label for="selectPriorityID">Priority:</label>
 			<select class="selectPriority" id="selectPriorityID">
-				<option value="low">Low</option>
-				<option value="medium">Medium</option>
-				<option value="high">High</option>
+				<option value="Low">Low</option>
+				<option value="Medium">Medium</option>
+				<option value="High">High</option>
 			</select>
 			<label for="reminderCheckbox">Reminder:</label>
 			<input name="reminder" type="checkbox" id="reminderCheckbox">
+			<br/>
+			<input type='button' href="#" value="Add Item" onclick="addItemButton()" class="listIcons">
 		</form>
 
+	<!--Import javascript-->
 		
 	</body>
 </html>

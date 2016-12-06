@@ -1,14 +1,18 @@
 <html lang="en">
+ <meta charset="UTF-8"> 
 	<head>
 		<title>
 			ToDoodle - Create as many lists as you want!
 		</title>
+		<!--Import-->
+		<script type="text/javascript" src="../Javascript/EnterPage.js"></script>
 		<script type="text/javascript" src="../Javascript/navBarResponsive.js"></script>
-		<link rel="stylesheet" href="../StyleSheets/toDoodleEnterPageCSS.css">
+		<link rel="stylesheet" href="../StyleSheets/toDoodleEnterPageCSS.css"/>
+		<link rel="stylesheet" href="../StyleSheets/toDoodleMenuBarCSS.css">
 	</head>
 	<body>
 	
-	
+	<!--navBar-->
 		<nav>
 			<ul class="navBar" id="topNavBar">
 				<li><img src="../Images/LogoNoBG.png" class="images" id="ToDoodleLogo"/><li>
@@ -23,27 +27,28 @@
 		</nav>
 		
 		
+		
+	<!--Header-->	
 		<header>
 			<h1 class="mainHeader" id="mainHeader">ToDoodle is the new way of making your To Do lists!</h1>
 		</header>
 		
 		
 		
+	<!--Login form-->
 		<form class="signUp">
 			<h2 class="signIn">Create your new free account right here:</h2>
 			<label for="email"></label>
 			<input name="email" type="text" placeholder="Enter your e-mail" class="inputBar" id="email"><br/>
 			<label for="password"></label>
-			<input name="password" type="text" placeholder="Enter your password" class="inputBar" id="password"><br/>
-			<input type="button" value="Log in" onclick="" class="logInButton" id="buttonLogIn"></input>
-			<input type="button" value="Sign up" onclick="" class="logInButton" id="buttonSignUp"></input>
+			<input name="password" type="password" placeholder="Enter your password" class="inputBar" id="password"><br/>
+			<input type="button" value="Log in" onclick="login()" class="logInButton" id="buttonLogIn"></input>
+			<input type="button" value="Sign up" onclick="signUp()" class="logInButton" id="buttonSignUp"></input>
 		</form>
 		
-		<!--<img src="../Images/ToDoodleImage1.png" class="mainImage"/>-->
 		
 		
-		
-		
+	<!--Footer-->
 		<footer>
 			<ul class="advantageList">
 			<li>
