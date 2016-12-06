@@ -1,0 +1,23 @@
+tabbed = done
+
+
+
+HTML
+	-Enter page html
+-About page html
+-Contact page html
+-Help page html
+
+
+
+CSS
+	-Enter page css
+-List page css
+-About page css
+-Contact page css
+-Help page css
+
+
+JS
+-Enter page JS
+-List page JS

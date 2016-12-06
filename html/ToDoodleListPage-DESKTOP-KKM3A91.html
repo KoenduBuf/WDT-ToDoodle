@@ -1,0 +1,56 @@
+<html lang="en">
+	<head>
+		<title>ToDoodle - Your lists</title>
+		
+	</head>
+	<body>
+	<script type="text/javascript" src="../Javascript/ListPage.js"></script>
+		<nav>
+			<ul class="navBar" id="topNavBar">
+				<li><img src="../Images/LogoNoBG.png" class="images" id="ToDoodleLogo"/><li>
+				<li><a class="active" href="ToDoodleEnterPage.html">Home</a></li>
+				<li><a href="ToDoodleAbout.html">About</a></li>
+				<li><a href="ToDoodleContact.html">Contact</a></li>
+				<li><a href="ToDoodleHelp.html">Help</a></li>
+				<li class="icon">
+					<a href="#" onclick="#">&#9776;</a>
+				</li>
+			</ul>
+		</nav>
+
+		<!--
+		<button value="Remove list" onclick="#" class="icons">
+			<img src="close.png" class="iconImages" alt="Remove List">
+		</button>
+		<button value="Add list" onclick="#" class="icons">
+			<img src="add-button.png" class="iconImages" alt="Add List">
+		</button>
+		<button value="Share list" onclick="#" class="icons">
+			<img src="connections.png" class="iconImages" alt="Share List">
+		</button>
+		<button value="Sort list" onclick="#" class="icons">
+			<img src="order.png" class="iconImages" alt="Sort List">
+		</button>
+		
+		
+		<ul class="listOfLists" id="listOfList">
+			<li>List 1</li>
+		</ul>
+		-->
+		
+		<ul class="myList" id="list1" title="myList1">
+			<li>test</li>
+			
+		</ul>
+		
+		<form>
+			<label for="itemName">Enter todo item:</label>
+			<input name="name" type="text" id="itemNameInput">
+			<button href="#" value="Add Item" onclick="changeText2()" class="listIcons">
+				<img src="../Images/new-file.png" class="iconImages" alt="Add Item">
+			</button>
+		</form>
+
+		
+	</body>
+</html>

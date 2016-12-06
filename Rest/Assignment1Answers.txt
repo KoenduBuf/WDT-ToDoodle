@@ -1,0 +1,50 @@
+2.2: No, the output is not the same as when opened through the original URL, probably since there is no CSS in our GET version of the HTML file
+
+2.3: Fri, 18 Nov 2016 14:14:19 GMT according to our HEAD.html file
+
+2.4: If the If-Modified-Since field is set AFTER the Last-Modified value, Does not show the page
+ if this is not the case: Just GET the html page
+
+2.5: leaving out 'www.' returns a not consistent output when using GET
+3.1: If the content-length is longer than the exact number of characters, then the 'empty'
+         spaces	are filled up with \r and \n which alternate each other for every empty space.
+         If the content-length is shorter than the exact number of character, then the last
+	 characters that exceed the length are cut off. 
+4.1: You stay signed in.
+4.2: telnet httpbin.org 80
+	HEAD /basic-auth/user/passwd HTTP/1.1
+	host:httpbin.org
+	Authorization: Basic dXNlcjpwYXNzd2Q=
+4.3: No, when you renew the telnet TCP connection, the authorization field is lost,
+	This practically means you have to authenticate again, or you wont get access to the page
+5.1	1) http://todoist.com
+	2) todo.ly
+5.2 	1) - a big photo is the main interface when you open the web application, it draws 			attention and does not necessarily give a crowded feel - positive
+	   - it has a red button standing out where you can sign up, also stating that it's free,
+		it draws the attention, works wellf - positive
+	   - if you scroll down it has an ordered overview with the main advantages and a button 			for different browsers, looks well - positive
+	2) - has an example of what the application will look like, but is hard to read - negative
+	   - two big buttons where you can sign up for free or log in, draw the attention - 			positive
+	   - explains the features of the web application when you scrool down, though the text is 			a bit too small to read, it does give a nice touch so you know what to expect - 		positive 
+6.1	1) - click: button to sign up (3 fields to fill in and submit button), 6 clicks to 			actually get started, 2 clicks to add date, setting a reminder was only a premium 			feature, so we couldn do that.
+	   - time: 1 minute.
+	   - actions: it was easy to find all the buttons but took a little trying out to find 			where to add a due date. all other options were clear and intuitive to find. 
+	2) - clicks: button to sign up (4 fields to fill in, plus agree to terms and submit), 2 		clicks to make a new list, 2 click to add a new item. setting the due date can 			only be done in Pro mode so we couldn't do that. 
+	   - time: This took 2 minutes. 
+	   - actions: Most actions were intuitive except finding the button where you could make a 			new list was a little hard to find.
+7.1:	1-Create todo list item
+	2-Sort items according to date
+	3-Delete todo list item
+	4-Search todo list item by keyword
+	5-View todo list items for specific date
+	6-View todo list items by date, week, and month view
+	7-Share your todo list with others
+	8-Give notification option (but not always)
+	9-Add labels to todo list items
+	10-Add a description to todo list items
+	11-Have your todo list accessable online AND (an older version) offline
+	12-Create sub tasks under a todo list item
+8.1 	our name is ToDoodle
+8.3	our target audience are students
+	reasoning: we have chose to have the log in screen right away because then you need less clicks to start up and log in to your page. we have chosen for a menu bar at the top so that it is easy to spot. Also we wanted a clear overview of our plus points as to why the user should choose our application instead of a different one. We have chosen to focus on the fact that is is easy to share, easy to access and you can have an unlimited number of lists. The interface of 
+
