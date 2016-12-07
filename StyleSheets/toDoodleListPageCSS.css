@@ -1,6 +1,11 @@
 /* General: body */
-body {
-	background-color:#b7f461;		
+table {
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+form {
+	text-align: center;
 }
 
 /* Item table */
@@ -24,7 +29,9 @@ body {
 .tableToDoList td.firstLine#Done{
 	width: 60px;
 }
-
+.tableToDoList td.firstLine#DoneButton{
+	width: 45px;
+}
 .tableToDoList td.firstLine#Name{
 	width: 200px;
 }

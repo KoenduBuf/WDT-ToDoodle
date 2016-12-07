@@ -1,9 +1,3 @@
-/* General: body */
-body {
-	background-color:#b7f461;		
-}
-
-
 /* advantage list stuff normally */
 img.imgAdvantageList{
 	width: 150px;
@@ -44,15 +38,9 @@ h1.mainHeader{
 }
 
 
-
-
 footer{
 	padding-top:50px;
 }
-
-
-
-
 
 
 
@@ -62,7 +50,11 @@ footer{
 	}
 	h1.mainHeader:before{
 		font-size: 36px;
-		content:"A new way of making To Do lists!";
+		content:"A new way of making ";
+	}
+	h1.mainHeader:after{
+		font-size: 36px;
+		content:"To Do Lists!";
 	}
 }
 

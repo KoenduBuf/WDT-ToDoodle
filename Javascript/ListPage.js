@@ -6,8 +6,12 @@ function addItemButton(){
 	var inputPriority=document.getElementById("selectPriorityID").value;
 	var inputReminder=document.getElementById("reminderCheckbox").checked;
 	
+	var btn = document.createElement("BUTTON");
+	var t = document.createTextNode("Done!");       
+	btn.appendChild(t);                                
+	
 	if(inputName && inputDueDate && inputPriority){
-		var newItem=new ToDoItem(inputName,inputPriority,inputDueDate,inputReminder,false);
+		var newItem=new ToDoItem(inputName,inputPriority,inputDueDate,inputReminder,false,btn);
 		if(!TheList.contains(newItem)){
 			TheList.addItem(newItem);
 			addToDoItemToTable(newItem, "tableList");
@@ -45,12 +49,20 @@ function ToDoItemList(ListName){
 }
 
 
-function ToDoItem(name, priority, dueDate, reminder, done){
+function ToDoItem(name, priority, dueDate, reminder, done, doneButton){
 	this.name=name;
 	this.priority=priority;
 	this.dueDate=dueDate;
 	this.reminder=reminder;
 	this.done=done;
+	this.doneButton=doneButton;
+	this.doneButton.idName="IDdoneButton";	
+	this.done.idName="IDdone";
+	this.doneButton.onclick = function() {
+		document.getElementById("IDdone").style.color = green;
+	}
+	
+	
 	this.equals=function(Other){
 		if(this.name != Other.name){
 			return false;
@@ -86,6 +98,13 @@ function addToDoItemToTable(ToDoI, idTableValue){
 	var cell3=row.insertCell(2);
 	var cell4=row.insertCell(3);
 	var cell5=row.insertCell(4);
+	var cell6=row.insertCell(5);
+	var currentDate = new Date();
+	var getCurrentDate = function () {
+		var month = currentDate.getMonth() + 1;
+		return currentDate.getFullYear() + "-" + month  + "-" + currentDate.getDate();
+	}
+	
 	cell1.innerHTML=ToDoI.name;
 	cell2.innerHTML=ToDoI.dueDate;
 	if(ToDoI.priority=="High"){
@@ -107,7 +126,28 @@ function addToDoItemToTable(ToDoI, idTableValue){
 	}else{
 		cell5.className="red";
 	}
+	
+	var smallerDate = function(dueDate, today) {
+		var resDue = dueDate.split("-");
+		var resToday = today.split("-");
+		if (resToday[2].charAt[1] == null) {
+			resToday[2] = "0" + resToday[2];
+		}
+		if (resDue[0] < resToday[0]) {
+			return true;
+		} else if (resDue[1] < resToday[1]){
+			return true;
+		} else if (resDue[2] < resToday[2]) {
+			return true;
+		} else {
+			return false;
+		}		
+	}
+	if(smallerDate(ToDoI.dueDate, getCurrentDate())) {	
+		cell2.className="red";
+	}
 	cell5.innerHTML=ToDoI.done;
+	cell6.appendChild(ToDoI.doneButton);
 }
 
 
