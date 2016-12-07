@@ -41,7 +41,7 @@
 			<label for="email"></label>
 			<input name="email" type="text" placeholder="Enter your e-mail" class="inputBar" id="email"><br/>
 			<label for="password"></label>
-			<input name="password" type="password" placeholder="Enter your password" class="inputBar" id="password"><br/>
+			<input name="password" onkeydown = "if (event.keyCode == 13)login()"  type="password" placeholder="Enter your password" class="inputBar" id="password"><br/>
 			<input type="button" value="Log in" onclick="login()" class="logInButton" id="buttonLogIn"></input>
 			<input type="button" value="Sign up" onclick="signUp()" class="logInButton" id="buttonSignUp"></input>
 		</form>
