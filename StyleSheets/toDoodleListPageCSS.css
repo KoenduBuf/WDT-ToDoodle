@@ -29,14 +29,17 @@ form {
 .tableToDoList td.firstLine#Done{
 	width: 60px;
 }
-.tableToDoList td.firstLine#DoneButton{
-	width: 45px;
+.tableToDoList td.firstLine#RemoveButton{
+	width: 80px;
 }
 .tableToDoList td.firstLine#Name{
 	width: 200px;
 }
 .tableToDoList td.firstLine#DueDate{
 	width: 100px;
+}
+.tableToDoList td.firstLine#CheckboxDone{
+	width: 40px;
 }
 	
 .tableToDoList td{
