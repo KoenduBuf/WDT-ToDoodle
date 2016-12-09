@@ -7,11 +7,19 @@ function addItemButton(){
 	var inputReminder=document.getElementById("reminderCheckbox").checked;
 	
 	var btn = document.createElement("BUTTON");
-	var t = document.createTextNode("Done!");       
-	btn.appendChild(t);                                
+	var t = document.createTextNode("Remove Item");       
+	btn.appendChild(t); 
+
+	var btn2 = document.createElement("BUTTON");
+	var t2 = document.createTextNode("Edit Item");
+	btn2.appendChild(t2);
+
+	var box = document.createElement('input');
+	box.type='checkbox';
+	box.idName='boxId';
 	
 	if(inputName && inputDueDate && inputPriority){
-		var newItem=new ToDoItem(inputName,inputPriority,inputDueDate,inputReminder,false,btn);
+		var newItem=new ToDoItem(inputName,inputPriority,inputDueDate,inputReminder,false,btn,btn2,box);
 		if(!TheList.contains(newItem)){
 			TheList.addItem(newItem);
 			addToDoItemToTable(newItem, "tableList");
@@ -49,16 +57,18 @@ function ToDoItemList(ListName){
 }
 
 
-function ToDoItem(name, priority, dueDate, reminder, done, doneButton){
+function ToDoItem(name, priority, dueDate, reminder, done, removeButton, editButton, checkbox){
 	this.name=name;
 	this.priority=priority;
 	this.dueDate=dueDate;
 	this.reminder=reminder;
 	this.done=done;
-	this.doneButton=doneButton;
-	this.doneButton.idName="IDdoneButton";	
+	this.removeButton=removeButton;
+	this.editButton=editButton;
+	this.checkbox=checkbox;
+	this.removeButton.idName="IDremoveButton";	
 	this.done.idName="IDdone";
-	this.doneButton.onclick = function() {
+	this.removeButton.onclick = function() {
 		document.getElementById("IDdone").style.color = green;
 	}
 	
@@ -99,6 +109,8 @@ function addToDoItemToTable(ToDoI, idTableValue){
 	var cell4=row.insertCell(3);
 	var cell5=row.insertCell(4);
 	var cell6=row.insertCell(5);
+	var cell7=row.insertCell(6);
+	var cell8=row.insertCell(7);
 	var currentDate = new Date();
 	var getCurrentDate = function () {
 		var month = currentDate.getMonth() + 1;
@@ -147,7 +159,9 @@ function addToDoItemToTable(ToDoI, idTableValue){
 		cell2.className="red";
 	}
 	cell5.innerHTML=ToDoI.done;
-	cell6.appendChild(ToDoI.doneButton);
+	cell6.appendChild(ToDoI.removeButton);
+	cell7.appendChild(ToDoI.editButton);
+	cell8.appendChild(ToDoI.checkbox);
 }
 
 
