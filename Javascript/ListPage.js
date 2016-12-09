@@ -7,7 +7,7 @@ function addItemButton(){
 	var inputReminder=document.getElementById("reminderCheckbox").checked;
 	
 	var btn = document.createElement("BUTTON");
-	var t = document.createTextNode("Done!");       
+	var t = document.createTextNode("Remove Item");       
 	btn.appendChild(t);                                
 	
 	if(inputName && inputDueDate && inputPriority){
@@ -49,16 +49,16 @@ function ToDoItemList(ListName){
 }
 
 
-function ToDoItem(name, priority, dueDate, reminder, done, doneButton){
+function ToDoItem(name, priority, dueDate, reminder, done, removeButton){
 	this.name=name;
 	this.priority=priority;
 	this.dueDate=dueDate;
 	this.reminder=reminder;
 	this.done=done;
-	this.doneButton=doneButton;
-	this.doneButton.idName="IDdoneButton";	
+	this.removeButton=removeButton;
+	this.removeButton.idName="IDremoveButton";	
 	this.done.idName="IDdone";
-	this.doneButton.onclick = function() {
+	this.removeButton.onclick = function() {
 		document.getElementById("IDdone").style.color = green;
 	}
 	
@@ -147,7 +147,7 @@ function addToDoItemToTable(ToDoI, idTableValue){
 		cell2.className="red";
 	}
 	cell5.innerHTML=ToDoI.done;
-	cell6.appendChild(ToDoI.doneButton);
+	cell6.appendChild(ToDoI.removeButton);
 }
 
 
