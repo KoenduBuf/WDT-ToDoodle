@@ -30,7 +30,10 @@ form {
 	width: 60px;
 }
 .tableToDoList td.firstLine#RemoveButton{
-	width: 80px;
+	width: 95px;
+}
+.tableToDoList td.firstLine#EditButton {
+	width: 65px;
 }
 .tableToDoList td.firstLine#Name{
 	width: 200px;
@@ -40,8 +43,7 @@ form {
 }
 .tableToDoList td.firstLine#CheckboxDone{
 	width: 40px;
-}
-	
+}	
 .tableToDoList td{
 	text-align: left;
 	border: 1px solid black;
@@ -55,3 +57,4 @@ form {
 .tableToDoList td.green{
 	background-color: #0cff00;
 }
+
