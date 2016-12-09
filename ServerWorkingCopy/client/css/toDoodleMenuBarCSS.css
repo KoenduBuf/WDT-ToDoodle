@@ -1,0 +1,88 @@
+body {
+	background-color: #b7f461;
+}
+
+/* navBar stuff normally */
+ul.navBar{
+	list-style-type: none;
+    margin: 0;
+	margin-bottom: 20px;
+    padding: 0;
+    overflow: hidden;
+    background-color: #3d7f1e;
+	width: 100%;
+	transition: 0.8s;
+}
+ul.navBar li {
+	float: left;
+	width: 20%;
+}
+ul.navBar li a {
+    display: inline-block;
+    color: #f2f2f2;
+	text-align: center;
+    padding: 20px 40px;
+    text-decoration: none;
+    font-size: 24px;
+}
+ul.navBar li img{
+	display: inline-block;
+	text-align: center;
+	padding: 0px 25px;
+}
+ul.navBar li a:hover {
+	background-color: #7ec65d;
+}
+ul.navBar li.icon {
+	display: none;
+}
+
+
+/* the ToDoodle logo normally*/
+#ToDoodleLogo {
+	width:161px;
+	height:65px;
+	float:left;
+	background-color:transparent;
+}
+ul.navBar li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+
+
+@media screen and (max-width:800px){
+	/* navBar stuff in small window */
+	ul.navBar li:not(:first-child){
+		display:none;
+	}
+	ul.navBar li.icon{
+		float:right;
+		display: inline-block;
+	}
+	ul.navBar.responsive #ToDoodleLogo{
+		display: none;
+	}
+	ul.navBar.responsive {
+		position: relative;
+	}
+	ul.navBar.responsive li.icon{
+		position: absolute;
+		right:0;
+		top:0;
+	}
+	ul.navBar.responsive li{
+		float:none;
+		display:inline;
+	}
+	ul.navBar.responsive li a{
+		display: block;
+		text-align: left;
+	}
+	ul.navBar.responsive li img{
+		display: block;
+		text-align: left;
+	}
+}

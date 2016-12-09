@@ -1,0 +1,90 @@
+<html lang="en">
+ <meta charset="UTF-8"> 
+	<head>
+		<title>ToDoodle - Your lists</title>
+		<!--Import stylesheets-->
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.js"></script>
+		<script type="text/javascript" src="../js/ListPage.js"></script>
+		<script type="text/javascript" src="../js/navBarResponsive.js"></script>
+		<link rel="stylesheet" href="../css/toDoodleListPageCSS.css"/>
+		<link rel="stylesheet" href="../css/toDoodleMenuBarCSS.css"/>
+	</head>
+	<body>
+	
+	
+	<!--navBar-->
+		<nav>
+			<ul class="navBar" id="topNavBar">
+				<li><img src="../img/LogoNoBG.png" class="images" id="ToDoodleLogo"/><li>
+				<li><a class="active" href="../index.html">Home</a></li>
+				<li><a href="./ToDoodleAbout.html">About</a></li>
+				<li><a href="./ToDoodleContact.html">Contact</a></li>
+				<li><a href="./ToDoodleHelp.html">Help</a></li>
+				<li class="icon">
+					<a href="#" onclick="responsiveFunction()">&#9776;</a>
+				</li>
+			</ul>
+		</nav>
+
+		
+		
+		<!--
+		<div>
+			<input type="button" value="Remove list" onclick="#" class="icons">
+				<img src="close.png" class="iconImages" alt="Remove List">
+			</input>
+			<input type="button" value="Add list" onclick="#" class="icons">
+				<img src="add-button.png" class="iconImages" alt="Add List">
+			</input>
+			<input type="button" value="Share list" onclick="#" class="icons">
+				<img src="connections.png" class="iconImages" alt="Share List">
+			</input>
+			<input type="button" value="Sort list" onclick="#" class="icons">
+				<img src="order.png" class="iconImages" alt="Sort List">
+			</input>
+		</div>
+		
+		<ul class="listOfLists" id="listOfList">
+			<li>List 1</li>
+		</ul>
+		-->
+		
+		<table class="tableToDoList" id="tableList" border="1">
+			<tr>
+				<td class="firstLine" id="Name"> Name: </td>
+				<td class="firstLine" id="DueDate"> Due Date: </td>
+				<td class="firstLine" id="Priority"> Priority: </td>
+				<td class="firstLine" id="Reminder"> Reminder: </td>
+				<td class="firstLine" id="Done"> Done: </td>
+				<td class="firstLine" id="DoneButton"></td>
+			</tr>
+		</table>
+		
+
+		
+		<form>
+			<label for="itemNameInput">Todo item:</label>
+			<input name="name" type="text" id="itemNameInput">
+			
+				<!--img src="../img/new-file.png" class="iconImages" alt="Add Item"-->
+			</input>
+			<br/>
+			<label for="dueDateInput">Due date:</label>
+			<input name="dueDate" type="date" id="dueDateInput">
+			<br/>
+			<label for="selectPriorityID">Priority:</label>
+			<select class="selectPriority" id="selectPriorityID">
+				<option value="Low">Low</option>
+				<option value="Medium">Medium</option>
+				<option value="High">High</option>
+			</select>
+			<label for="reminderCheckbox">Reminder:</label>
+			<input name="reminder" type="checkbox" id="reminderCheckbox">
+			<br/>
+			<input type='submit' href="#" value="Add Item" onclick="addItemButton()" class="listIcons">
+		</form>
+
+	<!--Import javascript-->
+		
+	</body>
+</html>

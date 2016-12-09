@@ -1,0 +1,54 @@
+/* General: body */
+table {
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+form {
+	text-align: center;
+}
+
+/* Item table */
+
+.tableToDoList{
+	border: 1px solid black;
+	table-layout: fixed;
+	margin-bottom:20px;
+}
+.tableToDoList td.firstLine{
+	text-align: center;
+	border: 3px solid black;
+	width: 150px;
+}
+.tableToDoList td.firstLine#Priority{
+	width: 60px;
+}
+.tableToDoList td.firstLine#Reminder{
+	width: 80px;
+}
+.tableToDoList td.firstLine#Done{
+	width: 60px;
+}
+.tableToDoList td.firstLine#DoneButton{
+	width: 45px;
+}
+.tableToDoList td.firstLine#Name{
+	width: 200px;
+}
+.tableToDoList td.firstLine#DueDate{
+	width: 100px;
+}
+	
+.tableToDoList td{
+	text-align: left;
+	border: 1px solid black;
+}
+.tableToDoList td.red{
+	background-color: #ff0800;
+}
+.tableToDoList td.orange{
+	background-color: #ff9000;
+}
+.tableToDoList td.green{
+	background-color: #0cff00;
+}

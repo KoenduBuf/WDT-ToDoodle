@@ -1,0 +1,68 @@
+<html lang="en">
+ <meta charset="UTF-8"> 
+	<head>
+		<title>
+			ToDoodle - Create as many lists as you want!
+		</title>
+		<!--Import-->
+		<script type="text/javascript" src="./js/EnterPage.js"></script>
+		<script type="text/javascript" src="./js/navBarResponsive.js"></script>
+		<link rel="stylesheet" href="./css/toDoodleEnterPageCSS.css"/>
+		<link rel="stylesheet" href="./css/toDoodleMenuBarCSS.css">
+	</head>
+	<body>
+	
+	<!--navBar-->
+		<nav>
+			<ul class="navBar" id="topNavBar">
+				<li><img src="../img/LogoNoBG.png" class="images" id="ToDoodleLogo"/><li>
+				<li><a class="active" href="./html/ToDoodleEnterPage.html">Home</a></li>
+				<li><a href="./html/ToDoodleAbout.html">About</a></li>
+				<li><a href="./html/ToDoodleContact.html">Contact</a></li>
+				<li><a href="./html/ToDoodleHelp.html">Help</a></li>
+				<li class="icon">
+					<a href="#" onclick="responsiveFunction()">&#9776;</a>
+				</li>
+			</ul>
+		</nav>
+		
+		
+		
+	<!--Header-->	
+		<header>
+			<h1 class="mainHeader" id="mainHeader">ToDoodle is the new way of making your To Do lists!</h1>
+		</header>
+		
+		
+		
+	<!--Login form-->
+		<form class="signUp">
+			<h2 class="signIn">Create your new free account right here:</h2>
+			<label for="email"></label>
+			<input name="email" type="text" placeholder="Enter your e-mail" class="inputBar" id="email"><br/>
+			<label for="password"></label>
+			<input name="password" onkeydown = "if (event.keyCode == 13)login()"  type="password" placeholder="Enter your password" class="inputBar" id="password"><br/>
+			<input type="button" value="Log in" onclick="login()" class="logInButton" id="buttonLogIn"></input>
+			<input type="button" value="Sign up" onclick="signUp()" class="logInButton" id="buttonSignUp"></input>
+		</form>
+		
+		
+		
+	<!--Footer-->
+		<footer>
+			<ul class="advantageList">
+			<li>
+				<img src="./img/ToDoList1.jpg" class="imgAdvantageList">
+				<h3 class="advantage">Create as many lists as you want</h3>
+			</li>
+			<li>
+				<img src="./img/ToDoList2.jpg" class="imgAdvantageList">
+				<h3 class="advantage">Access your lists everywhere you go</h3>
+			</li>
+			<li>
+				<img src="./img/ToDoList3.jpg" class="imgAdvantageList">
+				<h3 class="advantage">Share your lists with friends, family and colleagues</h3>
+			</li>
+		</footer>
+	</body>
+</html>
