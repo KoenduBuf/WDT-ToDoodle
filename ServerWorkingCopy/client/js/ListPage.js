@@ -66,10 +66,10 @@ function addToDoItemToTable(ToDoI, idTableValue){
 	var cell2=row.insertCell(1);
 	var cell3=row.insertCell(2);
 	var cell4=row.insertCell(3);
-	var cell5=row.insertCell(4);
-	var cell6=row.insertCell(5);
-		var cell7=row.insertCell(6);
-	var cell8=row.insertCell(7);
+	//var cell5=row.insertCell(4);
+	var cell6=row.insertCell(4);
+	var cell7=row.insertCell(5);
+	var cell8=row.insertCell(6);
 
 
 	//function:
@@ -101,23 +101,23 @@ function addToDoItemToTable(ToDoI, idTableValue){
 	//create a button
 	var doneButton = document.createElement("button");
 	var t = document.createTextNode("Remove Item");
-	doneButton.onclick=function(){
-		var newName=prompt("What would you like as new name?");
-		window.location="../modifyitem?id="+ToDoI.id+"&name="+newName;		
-//		window.location="../deleteitem?id="+ToDoI.id;
+	doneButton.onclick=function(){		
+		window.location="../deleteitem?id="+ToDoI.id;
 	}
 	doneButton.appendChild(t);
 	
 	var editButton = document.createElement("BUTTON");
 	var t2 = document.createTextNode("Edit Item");
 	editButton.onclick=function() {
-		
+		var newName=prompt("What would you like as new name?");
+		window.location="../modifyitem?id="+ToDoI.id+"&name="+newName;		
 	}
 	editButton.appendChild(t2);
 
 	var box = document.createElement('input');
 	box.type='checkbox';
 	box.idName='boxId';
+	
 
 
 	//fill up cells 1 to 5 with proper 
@@ -138,18 +138,18 @@ function addToDoItemToTable(ToDoI, idTableValue){
 	//	cell4.className="red";
 	//}
 	cell4.innerHTML=ToDoI.reminder;
-	if(ToDoI.done){
-		cell5.className="green";
-	}else{
-		cell5.className="red";
-	}
+	//if(ToDoI.done){
+	//	cell5.className="green";
+	//}else{
+	//	cell5.className="red";
+	//}
 	if(smallerDate(ToDoI.dueDate, getCurrentDate())) {	
 		cell2.className="red";
 	}
-	cell5.innerHTML=ToDoI.done;
+	//cell5.innerHTML=ToDoI.done;
 	cell6.appendChild(doneButton);
 	cell7.appendChild(editButton);
-	cell8.appendChile(box);
+	cell8.appendChild(box);
 }
 
 
