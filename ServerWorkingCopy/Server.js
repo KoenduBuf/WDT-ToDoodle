@@ -90,7 +90,8 @@ app.get("/modifyitem", function (req, res) {
 	var url_parts=url.parse(req.url, true);
 	var query = url_parts.query;
 	var newTodos=[];
-	
+
+		
 	if(query["id"]!==undefined) {
 		for (var key=0; key<todos.length;key++){
 			if(query["id"]==todos[key].id){
@@ -111,12 +112,13 @@ app.get("/modifyitem", function (req, res) {
 				}
 			}
 			var newItem=JSON.parse(JSON.stringify(todos[key]));
-			console.log(newItem);
-			console.log("TODOS: "+todos);
+			console.log("modified stuff");
 			newTodos.push(newItem);
+			
 		}
-		console.log("NEW TODOS: "+newTodos);
 		todos=newTodos;
+		writeObject("./list.json",todos);
+		res.redirect("/html/ToDoodleListPage.html");
 	}else{
 		res.end("Error, no ID when trying to modify");
 	}

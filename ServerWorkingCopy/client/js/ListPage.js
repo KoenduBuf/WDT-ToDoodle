@@ -100,8 +100,8 @@ function addToDoItemToTable(ToDoI, idTableValue){
 	var doneButton = document.createElement("button");
 	var t = document.createTextNode("Done!");
 	doneButton.onclick=function(){
-		window.location="../modifyitem?id="+ToDoI.id+"&name=newNameIe";		
-//		window.location="../deleteitem?id="+ToDoI.id;
+		var newName=prompt("What would you like as new name?");
+		window.location="../modifyitem?id="+ToDoI.id+"&name="+newName;
 	}
 	doneButton.appendChild(t);
 
