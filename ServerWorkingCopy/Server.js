@@ -137,7 +137,6 @@ function ToDoItem(name, priority, dueDate, reminder, done, id){
 	this.reminder=reminder;
 	this.done=done;
 	this.id=id;
-	
 }
 
 
