@@ -158,7 +158,6 @@ app.get("/modifyitem", function (req, res) {
 
 
 
-
 //function ToDoItem(name, priority, dueDate, reminder, done, id){
 //	this.name=name;
 //	this.priority=priority;
@@ -168,17 +167,12 @@ app.get("/modifyitem", function (req, res) {
 //	this.id=id;
 //}
 //function writeObject(fileName, object){
-	//Open up a write stream to the file
-//	var writeStream = fs.createWriteStream(fileName);
-	//write the object to the file in json format (does not do functions)	
-//	console.log("[d] written: "+fileName);
-//	writeStream.write(JSON.stringify(object));
-//}
-//function readObject(fileName){
-	//Open up a read stream to the file the object is in
-//	var content=fs.readFileSync(fileName);
-	//puts the content in an object
-//	console.log("[d] read: "+fileName);
-//	var object=JSON.parse(content);
-//	return object;
-//}
+
+
+
+
+
+
+
+
+
