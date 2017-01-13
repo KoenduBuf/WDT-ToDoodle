@@ -172,7 +172,7 @@ app.get("/dashAmountCompleted", function (req, res) {
 });
 
 app.get("/dashListOfDueDateNotCompleted", function (req, res) {
-	conToDb.query('SELECT Title, DueDate FROM ToDoItem WHERE Completed=0'
+	conToDb.query('SELECT Title, DueDate FROM ToDoItem WHERE Completed=0 ORDER BY DueDate'
 		,function(err, rows){
 		if(err) throw err;
 		res.end(JSON.stringify(rows));
