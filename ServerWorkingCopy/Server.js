@@ -187,6 +187,110 @@ app.get("/dashNumberOfTaskPerMonth", function (req, res) {
 });
 
 
+//the queries from assignment 4 exercise 2
+app.get("/query1", function (req, res) {
+	conToDb.query('SELECT * FROM ToDoList WHERE Owner = 1'
+		,function(err, rows){
+		if(err) throw err;
+		res.end(JSON.stringify(rows));
+	});
+});
+
+app.get("/query2", function (req, res) {
+	conToDb.query('SELECT * FROM ToDoItem WHERE ToDoListID = 1'
+		,function(err, rows){
+		if(err) throw err;
+		res.end(JSON.stringify(rows));
+	});
+});
+
+app.get("/query3", function (req, res) {
+	conToDb.query('SELECT * FROM ToDoItem WHERE ToDoListID = 1 LIMIT 1,3'
+		,function(err, rows){
+		if(err) throw err;
+		res.end(JSON.stringify(rows));
+	});
+});
+
+app.get("/query4", function (req, res) {
+	conToDb.query('SELECT * FROM ToDoItem WHERE ToDoListID = 1 AND Priority > 2 AND Completed = 1 AND CreationDate BETWEEN '2014/01/01' AND '2015/01/01' LIMIT 0,8'
+		,function(err, rows){
+		if(err) throw err;
+		res.end(JSON.stringify(rows));
+	});
+});
+
+app.get("/query5", function (req, res) {
+	conToDb.query('SELECT * FROM ToDoItem WHERE ParentToDo IN (SELECT Id FROM ToDoItem           WHERE Id = 6)'
+		,function(err, rows){
+		if(err) throw err;
+		res.end(JSON.stringify(rows));
+	});
+});
+
+app.get("/query6", function (req, res) {
+	conToDb.query('SELECT Text FROM Tag WHERE Id IN (SELECT TagId FROM ItemTag WHERE ToDoId IN (SELECT Id FROM ToDoItem WHERE Id = 1))'
+		,function(err, rows){
+		if(err) throw err;
+		res.end(JSON.stringify(rows));
+	});
+});
+
+app.get("/query7", function (req, res) {
+	conToDb.query('SELECT * FROM ToDoList WHERE Id IN (SELECT ToDoListID FROM ToDoItem WHERE Id IN (SELECT ToDoId FROM ItemTag WHERE TagId IN (SELECT Id FROM Tag WHERE Id = 1 )))'
+		,function(err, rows){
+		if(err) throw err;
+		res.end(JSON.stringify(rows));
+	});
+});
+
+app.get("/query8", function (req, res) {
+	conToDb.query('SELECT SUM(CASE WHEN Completed=1 THEN 1 ELSE 0 END) as Completed, SUM(CASE WHEN Completed=0 THEN 1 ELSE 0 END) as Not_Completed FROM ToDoItem WHERE Id IN (SELECT ToDoId FROM ItemTag WHERE TagId IN (SELECT Id  FROM Tag WHERE Id = 1 ))'
+		,function(err, rows){
+		if(err) throw err;
+		res.end(JSON.stringify(rows));
+	});
+});
+
+app.get("/query9", function (req, res) {
+	conToDb.query('SELECT WEEK(CompletionDate), Count(*) FROM ToDoItem WHERE Completed=1 GROUP BY WEEK(CompletionDate)'
+		,function(err, rows){
+		if(err) throw err;
+		res.end(JSON.stringify(rows));
+	});
+});
+
+app.get("/query10", function (req, res) {
+	conToDb.query('SELECT * FROM ToDoItem WHERE ToDoItem.Completed = 1 ORDER BY DATEDIFF(ToDoItem.CreationDate, ToDoItem.CompletionDate) DESC LIMIT 0,10'
+		,function(err, rows){
+		if(err) throw err;
+		res.end(JSON.stringify(rows));
+	});
+});
+
+app.get("/query11", function (req, res) {
+	conToDb.query('SELECT T1.TagId As Tag1, T2.TagId AS Tag2, COUNT(*) FROM ItemTag AS T1 JOIN ItemTag AS T2 ON T1.ToDoId = T2.ToDoId WHERE T1.TagId < T2.TagId GROUP BY T1.TagId, T2.TagId'
+		,function(err, rows){
+		if(err) throw err;
+		res.end(JSON.stringify(rows));
+	});
+});
+
+app.get("/query12", function (req, res) {
+	conToDb.query('SELECT AVG(datediff(ToDoItem.CompletionDate, ToDoItem.CreationDate)) AS DifferenceInDays FROM ToDoItem WHERE ToDoItem.Completed = 1 AND ToDoItem.ToDoListID = 1'
+		,function(err, rows){
+		if(err) throw err;
+		res.end(JSON.stringify(rows));
+	});
+});
+
+app.get("/query13", function (req, res) {
+	conToDb.query('SELECT * FROM ToDoItem WHERE datediff(ToDoItem.CompletionDate, ToDoItem.CreationDate) > (SELECT AVG(datediff(ToDoItem.CompletionDate, ToDoItem.CreationDate)) AS DifferenceInDays FROM ToDoItem WHERE ToDoItem.Completed = 1 AND ToDoItem.ToDoListID = 1) AND ToDoItem.ToDoListID = 1'
+		,function(err, rows){
+		if(err) throw err;
+		res.end(JSON.stringify(rows));
+	});
+});
 
 
 
