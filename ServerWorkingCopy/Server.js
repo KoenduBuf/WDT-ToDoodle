@@ -270,7 +270,7 @@ app.get("/query10", function (req, res) {
 });
 
 app.get("/query11", function (req, res) {
-	conToDb.query('SELECT T1.TagId As Tag1, T2.TagId AS Tag2, COUNT(*) FROM ItemTag AS T1 JOIN ItemTag AS T2 ON T1.ToDoId = T2.ToDoId WHERE T1.TagId < T2.TagId GROUP BY T1.TagId, T2.TagId'
+	conToDb.query('SELECT T1.TagId As Tag1, T2.TagId AS Tag2, COUNT(*) AS Total FROM ItemTag AS T1 JOIN ItemTag AS T2 ON T1.ToDoId = T2.ToDoId WHERE T1.TagId < T2.TagId GROUP BY T1.TagId, T2.TagId'
 		,function(err, rows){
 		if(err) throw err;
 		res.end(JSON.stringify(rows));
