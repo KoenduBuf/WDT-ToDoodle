@@ -160,7 +160,8 @@ app.get("/modifyitem", function (req, res) {
 
 });
 
-
+//app.get("/dashboard", function (req, res) {
+//});
 
 app.get("/dashAmountCompleted", function (req, res) {
 	conToDb.query('SELECT SUM(CASE WHEN Completed=1 THEN 1 ELSE 0 END) AS CompletedNum, SUM(CASE WHEN Completed=0 THEN 1 ELSE 0 END) AS NotCompletedNum FROM ToDoItem'
@@ -213,7 +214,7 @@ app.get("/query3", function (req, res) {
 });
 
 app.get("/query4", function (req, res) {
-	conToDb.query('SELECT * FROM ToDoItem WHERE ToDoListID = 1 AND Priority > 2 AND Completed = 1 AND CreationDate BETWEEN '2014/01/01' AND '2015/01/01' LIMIT 0,8'
+	conToDb.query("SELECT * FROM ToDoItem WHERE ToDoListID = 1 AND Priority > 2 AND Completed = 1 AND CreationDate BETWEEN '2014/01/01' AND '2015/01/01' LIMIT 0,8"
 		,function(err, rows){
 		if(err) throw err;
 		res.end(JSON.stringify(rows));
