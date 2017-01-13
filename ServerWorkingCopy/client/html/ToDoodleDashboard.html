@@ -1,6 +1,7 @@
 <html lang=en>
 	<head>
 		<title>Dashboard user</title>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.js"></script>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<link rel="stylesheet" href="../css/toDoodleMenuBarCSS.css">
 	</head>
@@ -8,7 +9,7 @@
 	<!--navBar-->
 		<nav>
 			<ul class="navBar" id="topNavBar">
-				<li><img src="../Images/LogoNoBG.png" class="images" id="ToDoodleLogo"/><li>
+				<li><img src="../img/LogoNoBG.png" class="images" id="ToDoodleLogo"/><li>
 				<li><a class="active" href="ToDoodleEnterPage.html">Home</a></li>
 				<li><a href="ToDoodleAbout.html">About</a></li>
 				<li><a href="ToDoodleContact.html">Contact</a></li>
@@ -28,20 +29,19 @@
 			<canvas id="myChart" width="400" height="400"></canvas>
 			<script src="Chart.js"></script>
 			<script>
-			function dataIn () {
-				var done = mysql_query("SELECT COUNT(*) FROM ToDoItem WHERE Completed=1");
-				var total = mysql_query("SELECT COUNT(*) FROM ToDoItem");
-				var notCompleted = total - done;
-				return [done, notCompleted];
-			};	
-			var ctx = document.getElementById("myChart");
-			var myChart = new Chart(ctx, {
+			var value;
+			var dataIn = function (data) {
+				console.log(data[0].CompletedNum);
+				window.value =  data[0];
+				
+				var ctx = document.getElementById("myChart");
+				var myChart = new Chart(ctx, {
 			    type: 'pie',
 			    data: {
 				labels: ["Completed", "To Do"],
 				datasets: [{
 				    label: 'To Do Items Left To Do',
-				    data: [12,5],
+				    data: [data[0].CompletedNum, data[0].NotCompletedNum],
 				    backgroundColor: [
 					'rgba(255, 99, 132, 0.2)',
 					'rgba(54, 162, 235, 0.2)'
@@ -54,6 +54,15 @@
 				}]
 			    },
 			});	
+			};	
+
+			$.getJSON("../dashAmountCompleted",dataIn)
+				.error(function(jqXHR, textStatus, errorThrown){
+				console.log("error in Dashboard"+textStatus);
+				console.log("incommingText: "+jqXHR.responseText);
+			});
+			
+			
 			</script>
 		</div>
 		<div id="listDueDates">
@@ -62,19 +71,21 @@
 			</ol>
 		</div>
 		<div id="numberTasksPerMonth">
-			<canvas id="myChart" width="400" height="400"></canvas>
+			<canvas id="myChart2" width="400" height="400"></canvas>
 			<script src="Chart.js"></script>
 			<script>
 			document.addEventListener('DOMContentLoaded', domloaded, false);
-			function domloaded() {				
+			function domloaded() {
+
 				function dataIn () {
 				var done = mysql_query("SELECT COUNT(*) FROM ToDoItem WHERE Completed=1");
 				var total = mysql_query("SELECT COUNT(*) FROM ToDoItem");
 				var notCompleted = total - done;
 				return [done, notCompleted];
 				};	
-				var ctx = document.getElementById("myChart");
-				var myChart = new Chart(ctx, {
+				var ctx = document.getElementById("myChart2");
+
+				var myChart2 = new Chart(ctx, {
 				    type: 'bar',
 				    data: {
 					labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
@@ -113,6 +124,7 @@
 				}]
 			    },
 			});	
+			}
 			</script>
 		</div>
 	</body>
