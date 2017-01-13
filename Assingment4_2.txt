@@ -1,0 +1,228 @@
+1 List all the ToDoLists belonging to a given user. The identifier of the user should be specified as
+a condition in the WHERE clause of the query.
+
+SELECT *
+FROM ToDoList
+WHERE Owner = 1
+
+'1', 'School', '2013-01-25 12:35:00', '1', '0'
+'2', 'Work', '2014-02-14 00:00:00', '1', '0'
+
+
+2 List all the ToDoItems belonging to a given ToDoList. The identifier of the ToDoList should be
+specified as a condition in the WHERE clause of the query.
+
+SELECT *
+FROM ToDoItem
+WHERE ToDoListID = 1
+
+'1', 'Do assignment 1', 'Finish assignment one before the assessment time', '2014-11-17 12:56:12', '2014-11-20 23:59:59', '1', '2014-11-20 23:55:15', '3', '1', NULL
+'2', 'Do telnet exercises', 'Do all telnet exercises and understand what is happening and why', '2014-11-18 22:51:48', '2014-11-20 23:59:59', '1', '2014-11-18 13:35:48', '3', '1', '1'
+'3', 'Do HTML part of assignment 1', 'Do the html part of the first assignment: code and design', '2014-11-18 15:26:58', '2014-11-20 23:59:59', '1', '2014-11-19 15:59:36', '3', '1', '1'
+'17', 'Assignment 2', 'Fix all parts of assignment 2 for webdata', '2014-11-25 12:22:45', '2014-11-27 15:45:00', '1', '2014-11-27 12:52:33', '3', '1', NULL
+'18', 'First part of 2', 'Do the first part of the second assignment', '2014-11-25 12:23:15', '2014-11-27 15:45:00', '1', '2014-11-26 09:12:52', '3', '1', '17'
+'19', 'Second part of 2', 'Do the second part of the second assignment', '2014-11-25 12:25:55', '2014-11-27 15:45:00', '1', '2014-11-27 12:52:33', '3', '1', '17'
+'20', 'Learn for Midterm', 'For webdata midterm', '2014-12-01 14:55:32', '2014-12-09 09:00:00', '1', '2014-11-08 22:55:15', '1', '1', NULL
+'22', 'Assigment 3 and 4', 'For webdata', '2014-12-02 16:11:25', '2014-12-18 12:00:00', '0', NULL, '3', '1', NULL
+...
+
+
+3 As in (2), but now allow for pagination of ToDoItems. This means that the query should show a
+pre-defined amount of results, starting from a given tuple. Use the LIMIT clause implemented in
+MySQL (http://dev.mysql.com/doc/refman/5.7/en/select.html)
+
+SELECT *
+FROM ToDoItem
+WHERE ToDoListID = 1
+LIMIT 1,3
+
+'2', 'Do telnet exercises', 'Do all telnet exercises and understand what is happening and why', '2014-11-18 22:51:48', '2014-11-20 23:59:59', '1', '2014-11-18 13:35:48', '3', '1', '1'
+'3', 'Do HTML part of assignment 1', 'Do the html part of the first assignment: code and design', '2014-11-18 15:26:58', '2014-11-20 23:59:59', '1', '2014-11-19 15:59:36', '3', '1', '1'
+'17', 'Assignment 2', 'Fix all parts of assignment 2 for webdata', '2014-11-25 12:22:45', '2014-11-27 15:45:00', '1', '2014-11-27 12:52:33', '3', '1', NULL
+
+
+4 Add to the query in (3) the ability to filter ToDoItems according to 1) A range of date creation,
+2) a priority level, 3) the completion status.
+
+SELECT *
+FROM ToDoItem
+WHERE ToDoListID = 1
+    AND Priority > 2
+    AND Completed = 1
+    AND CreationDate BETWEEN '2014/01/01' AND '2015/01/01'
+LIMIT 0,8
+
+'1', 'Do assignment 1', 'Finish assignment one before the assessment time', '2014-11-17 12:56:12', '2014-11-20 23:59:59', '1', '2014-11-20 23:55:15', '3', '1', NULL
+'2', 'Do telnet exercises', 'Do all telnet exercises and understand what is happening and why', '2014-11-18 22:51:48', '2014-11-20 23:59:59', '1', '2014-11-18 13:35:48', '3', '1', '1'
+'3', 'Do HTML part of assignment 1', 'Do the html part of the first assignment: code and design', '2014-11-18 15:26:58', '2014-11-20 23:59:59', '1', '2014-11-19 15:59:36', '3', '1', '1'
+'17', 'Assignment 2', 'Fix all parts of assignment 2 for webdata', '2014-11-25 12:22:45', '2014-11-27 15:45:00', '1', '2014-11-27 12:52:33', '3', '1', NULL
+'18', 'First part of 2', 'Do the first part of the second assignment', '2014-11-25 12:23:15', '2014-11-27 15:45:00', '1', '2014-11-26 09:12:52', '3', '1', '17'
+'19', 'Second part of 2', 'Do the second part of the second assignment', '2014-11-25 12:25:55', '2014-11-27 15:45:00', '1', '2014-11-27 12:52:33', '3', '1', '17'
+'23', 'Assignemnt 3 part 1 ', 'part 1 for A3', '2014-12-02 16:12:11', '2014-12-18 12:00:00', '1', '2014-12-14 12:55:34', '3', '1', '22'
+'24', 'Assignment 3 part 2', 'part 2 for A3', '2014-12-02 16:12:55', '2014-12-18 12:00:00', '1', '2014-12-14 18:32:56', '3', '1', '22'
+
+5 For a given ToDoItem, show all its sub-items.
+
+SELECT *
+FROM ToDoItem
+WHERE ParentToDo IN (SELECT Id
+			FROM ToDoItem
+                    	WHERE Id = 6
+                    )
+
+'7', 'Creates images', 'We can create images to make the assignment look better', '2014-10-25 21:25:55', '2014-12-09 23:59:59', '1', '2014-10-27 12:59:46', '1', '3', '6'
+'8', 'Finish chapter 1', 'Finish and check the text for chapter 1', '2014-10-05 21:26:54', '2014-12-09 23:59:59', '1', '2014-12-04 01:22:15', '2', '3', '6'
+'9', 'Finish chapter 2', 'Finish and check chapter 2', '2014-10-25 21:57:58', '2014-12-09 23:59:59', '1', '2014-12-05 12:35:22', '2', '3', '6'
+'10', 'Finish conclusion', 'Finish and check the conclusion', '2014-11-24 22:02:35', '2014-12-09 23:59:59', '0', NULL, '2', '3', '6'
+
+6 For a given ToDoItem, show the value of all its tags.
+
+SELECT Text
+FROM Tag
+WHERE Id IN (SELECT TagId
+		FROM ItemTag
+		WHERE ToDoId IN (SELECT Id
+				FROM ToDoItem
+                                WHERE Id = 1
+                		)
+		)
+
+'webdata'
+'school'
+
+7 For a given tag, show all the ToDoLists that contain ToDoItems which are tagged with that tag.
+
+SELECT *
+FROM ToDoList
+WHERE Id IN (SELECT ToDoListID
+	FROM ToDoItem
+	WHERE Id IN (SELECT ToDoId
+		FROM ItemTag
+		WHERE TagId IN (SELECT Id 
+				FROM Tag
+				WHERE Id = 1
+				)
+		)
+	)
+
+'1', 'School', '2013-01-25 12:35:00', '1', '0'
+
+
+8 For each tag, calculate the number of currently pending and completed to-dos.
+
+SELECT SUM(CASE WHEN Completed=1 THEN 1 ELSE 0 END) as Completed, SUM(CASE WHEN Completed=0 THEN 1 ELSE 0 END) as Not_Completed
+FROM ToDoItem
+WHERE Id IN (SELECT ToDoId
+		FROM ItemTag
+		WHERE TagId IN (SELECT Id 
+				FROM Tag
+				WHERE Id = 1
+				)
+		)
+'11', '2'
+
+9 For each week in the current year, calculate the number of completed to-dos.
+
+SELECT WEEK(CompletionDate), Count(*)
+FROM ToDoItem
+WHERE Completed=1
+GROUP BY WEEK(CompletionDate)
+
+'20', '1'
+'43', '1'
+'44', '1'
+'46', '3'
+'47', '5'
+'48', '2'
+'50', '4'
+
+
+10 For each tag, retrieve the 10 to-dos with quickest completion time (i.e. the time between the
+creation and the completion of the to-do).
+
+SELECT *
+FROM ToDoItem
+WHERE ToDoItem.Completed = 1
+ORDER BY DATEDIFF(ToDoItem.CreationDate, ToDoItem.CompletionDate) DESC
+LIMIT 0,10
+
+'20', 'Learn for Midterm', 'For webdata midterm', '2014-12-01 14:55:32', '2014-12-09 09:00:00', '1', '2014-11-08 22:55:15', '1', '1', NULL
+'2', 'Do telnet exercises', 'Do all telnet exercises and understand what is happening and why', '2014-11-18 22:51:48', '2014-11-20 23:59:59', '1', '2014-11-18 13:35:48', '3', '1', '1'
+'3', 'Do HTML part of assignment 1', 'Do the html part of the first assignment: code and design', '2014-11-18 15:26:58', '2014-11-20 23:59:59', '1', '2014-11-19 15:59:36', '3', '1', '1'
+'18', 'First part of 2', 'Do the first part of the second assignment', '2014-11-25 12:23:15', '2014-11-27 15:45:00', '1', '2014-11-26 09:12:52', '3', '1', '17'
+'7', 'Creates images', 'We can create images to make the assignment look better', '2014-10-25 21:25:55', '2014-12-09 23:59:59', '1', '2014-10-27 12:59:46', '1', '3', '6'
+'17', 'Assignment 2', 'Fix all parts of assignment 2 for webdata', '2014-11-25 12:22:45', '2014-11-27 15:45:00', '1', '2014-11-27 12:52:33', '3', '1', NULL
+'19', 'Second part of 2', 'Do the second part of the second assignment', '2014-11-25 12:25:55', '2014-11-27 15:45:00', '1', '2014-11-27 12:52:33', '3', '1', '17'
+'1', 'Do assignment 1', 'Finish assignment one before the assessment time', '2014-11-17 12:56:12', '2014-11-20 23:59:59', '1', '2014-11-20 23:55:15', '3', '1', NULL
+'21', 'Vacuum', 'in my room', '2014-11-22 12:55:22', '2014-11-27 12:00:00', '1', '2014-11-25 15:44:22', '1', '4', NULL
+'27', 'Create database for students', 'So they can practice with the assignments', '2014-12-12 15:48:55', '2014-12-16 23:59:59', '1', '2014-12-16 15:22:45', '3', '1', NULL
+
+11 Calculate the frequency of co-occurrence of tags (i.e. the number of times each possible
+combination of tag pairs is used in the database)
+
+SELECT T1.TagId As Tag1, T2.TagId AS Tag2, COUNT(*)
+FROM ItemTag AS T1 JOIN ItemTag AS T2 ON T1.ToDoId = T2.ToDoId
+WHERE T1.TagId < T2.TagId
+GROUP BY T1.TagId, T2.TagId
+'1', '3', '13'
+'1', '5', '1'
+'2', '5', '3'
+'3', '5', '2'
+
+12 For a given ToDoList, calculated the average time of completion of to-dos
+
+SELECT AVG(datediff(ToDoItem.CompletionDate, ToDoItem.CreationDate)) AS DifferenceInDays
+FROM ToDoItem
+WHERE ToDoItem.Completed = 1
+AND ToDoItem.ToDoListID = 1
+
+'2.5455'
+
+13 List the to-dos having a completion time higher than the average time of completion for the todos
+belonging to the same ToDoList
+
+SELECT *
+FROM ToDoItem
+WHERE datediff(ToDoItem.CompletionDate, ToDoItem.CreationDate) > (
+	SELECT AVG(datediff(ToDoItem.CompletionDate, ToDoItem.CreationDate)) AS DifferenceInDays
+	FROM ToDoItem
+	WHERE ToDoItem.Completed = 1
+	AND ToDoItem.ToDoListID = 1
+)
+AND ToDoItem.ToDoListID = 1
+
+'1', 'Do assignment 1', 'Finish assignment one before the assessment time', '2014-11-17 12:56:12', '2014-11-20 23:59:59', '1', '2014-11-20 23:55:15', '3', '1', NULL
+'23', 'Assignemnt 3 part 1 ', 'part 1 for A3', '2014-12-02 16:12:11', '2014-12-18 12:00:00', '1', '2014-12-14 12:55:34', '3', '1', '22'
+'24', 'Assignment 3 part 2', 'part 2 for A3', '2014-12-02 16:12:55', '2014-12-18 12:00:00', '1', '2014-12-14 18:32:56', '3', '1', '22'
+'25', 'Assignment 4 part 1', 'part 1 for A4', '2014-12-02 16:14:25', '2014-12-18 12:00:00', '1', '2014-12-16 13:25:56', '3', '1', '22'
+'27', 'Create database for students', 'So they can practice with the assignments', '2014-12-12 15:48:55', '2014-12-16 23:59:59', '1', '2014-12-16 15:22:45', '3', '1', NULL
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
