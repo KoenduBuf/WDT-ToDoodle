@@ -14,7 +14,7 @@ var refreshList = function(){
 	};
 	$.getJSON("../todos",addTodosToList)
 		.error(function(jqXHR, textStatus, errorThrown){
-			console.log("error "+textStatus);
+			console.log("error in /todos "+textStatus);
 			console.log("incommingText: "+jqXHR.responseText);
 		});
 };
