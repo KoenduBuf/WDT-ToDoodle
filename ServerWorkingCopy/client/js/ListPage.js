@@ -32,9 +32,10 @@ var refreshList = function(){
 function addItemButton(){
 	var inputTitle=document.getElementById("itemNameInput").value;
 	var inputPriority=document.getElementById("selectPriorityID").value;
+	
 
-	if(inputName){
-		window.location="../additem?Title="+inputTitle+"&Priority="+inputPriority+"&Completed=0";
+	if(inputTitle){
+		window.location="../additem?Title="+inputTitle+"&Priority=1&Completed=0";
 	}
 }
 
@@ -98,7 +99,7 @@ function addToDoItemToTable(ToDoI, idTableValue){
 	var doneButton = document.createElement("button");
 	var t = document.createTextNode("Remove Item");
 	doneButton.onclick=function(){		
-		window.location="../deleteitem?id="+ToDoI.Id;
+		window.location="../deleteitem?Id="+ToDoI.Id;
 	}
 	doneButton.appendChild(t);
 	
@@ -106,7 +107,7 @@ function addToDoItemToTable(ToDoI, idTableValue){
 	var t2 = document.createTextNode("Edit Item");
 	editButton.onclick=function() {
 		var newName=prompt("What would you like as new title?");
-		window.location="../modifyitem?id="+ToDoI.Id+"&Title="+newName;		
+		window.location="../modifyitem?Id="+ToDoI.Id+"&Title="+newName;		
 	}
 	editButton.appendChild(t2);
 
@@ -119,7 +120,7 @@ function addToDoItemToTable(ToDoI, idTableValue){
 	//fill up cells 1 to 5 with proper 
 	//names and give them classes for colors
 	cell1.innerHTML=ToDoI.Title;
-	//cell2.innerHTML=ToDoI.DueDate;
+	cell2.innerHTML=ToDoI.DueDate;
 	//if(ToDoI.priority=="High"){
 	//	cell3.className="red";
 	//}else if(ToDoI.priority=="Medium"){

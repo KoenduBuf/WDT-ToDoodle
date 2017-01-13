@@ -41,7 +41,7 @@ console.log("[i] - Server listening on port " + port);
 
 //When client requests todos:
 app.get("/todos", function (req, res){
-	conToDb.query('SELECT Id, Title, Completed, Priority FROM ToDoItem',function(err, rows){
+	conToDb.query('SELECT Id, Title, Completed, DueDate, Priority FROM ToDoItem',function(err, rows){
 		if(err) throw err;
 		res.end(JSON.stringify(rows));
 	});
@@ -172,7 +172,7 @@ app.get("/dashAmountCompleted", function (req, res) {
 });
 
 app.get("/dashListOfDueDateNotCompleted", function (req, res) {
-	conToDb.query('SELECT Title, DueDate FROM ToDoItem WHERE Completed=0 ORDER BY DueDate'
+	conToDb.query('SELECT Title, DueDate FROM ToDoItem WHERE Completed=0 ORDER BY DueDate DESC'
 		,function(err, rows){
 		if(err) throw err;
 		res.end(JSON.stringify(rows));
