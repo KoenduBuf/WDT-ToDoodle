@@ -222,7 +222,11 @@ app.get("/query4", function (req, res) {
 });
 
 app.get("/query5", function (req, res) {
-	conToDb.query('SELECT * FROM ToDoItem WHERE ParentToDo IN (SELECT Id FROM ToDoItem           WHERE Id = 6)'
+	var url_parts=url.parse(req.url, true);
+	var query = url_parts.query;
+
+
+	conToDb.query('SELECT * FROM ToDoItem WHERE ParentToDo IN (SELECT Id FROM ToDoItem WHERE Id = ?)',query["Id"]
 		,function(err, rows){
 		if(err) throw err;
 		res.end(JSON.stringify(rows));

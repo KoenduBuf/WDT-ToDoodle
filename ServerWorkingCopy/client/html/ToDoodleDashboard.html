@@ -197,5 +197,65 @@
 
 			</script>
 		</div>
+
+		<div id="query5">
+			<ul id="q5ul1">
+
+
+			</ul>
+			<ul id="q5ul6">
+
+
+			</ul>
+
+			<script type="text/javascript">
+				var dataIn = function(data){
+					var topUl = document.getElementById("q5ul1");
+					var liTopUl = document.createElement("li");
+					liTopUl.innerHTML="Items with ParentToDoId=1";
+					topUl.appendChild(liTopUl);
+					var ulLiTopUl = document.createElement("ul");
+					liTopUl.appendChild(ulLiTopUl);
+
+					for(var key in data){
+						var liUlLiTopUl =  document.createElement("li");
+						ulLiTopUl.appendChild(liUlLiTopUl);
+						var t2 = document.createTextNode("TestText");
+						liUlLiTopUl.innerHTML="Title: "+data[key].Title;
+					}
+					
+					
+				};
+				$.getJSON("../query5?Id=1",dataIn)
+					.error(function(jqXHR, textStatus, errorThrown){
+					console.log("error in Dashboard"+textStatus);
+					console.log("incommingText: "+jqXHR.responseText);
+				});
+
+				var dataIn2 = function(data){
+					var topUl = document.getElementById("q5ul6");
+					var liTopUl = document.createElement("li");
+					liTopUl.innerHTML="Items with ParentToDoId=6";
+					topUl.appendChild(liTopUl);
+					var ulLiTopUl = document.createElement("ul");
+					liTopUl.appendChild(ulLiTopUl);
+
+					for(var key in data){
+						var liUlLiTopUl =  document.createElement("li");
+						ulLiTopUl.appendChild(liUlLiTopUl);
+						var t2 = document.createTextNode("TestText");
+						liUlLiTopUl.innerHTML="Title: "+data[key].Title;
+					}
+					
+					
+				};
+				$.getJSON("../query5?Id=6",dataIn2)
+					.error(function(jqXHR, textStatus, errorThrown){
+					console.log("error in Dashboard"+textStatus);
+					console.log("incommingText: "+jqXHR.responseText);
+				});
+
+			</script>
+		</div>
 	</body>
 </html>
